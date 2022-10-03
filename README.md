@@ -1,1 +1,1 @@
-# React-e-commerce-bundle
+React E-Commerce Websites Bundle.
