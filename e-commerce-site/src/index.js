@@ -1,6 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'jquery';
+import 'popper.js/dist/umd/popper';
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
