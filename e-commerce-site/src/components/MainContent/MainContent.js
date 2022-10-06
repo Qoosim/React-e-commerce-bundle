@@ -6,11 +6,11 @@ class MainContent extends Component {
     title: "Customers",
     count: 5,
     customers: [
-      { id: 1, name: "James", phone: "123-456", address: { city: "Eleyele" } },
-      { id: 2, name: "John", phone: null, address: { city: "Sango" } },
-      { id: 3, name: "Peter", phone: "113-152", address: { city: "Ojoo" } },
-      { id: 4, name: "Jonas", phone: "143-401", address: { city: "UI" } },
-      { id: 5, name: "Mark", phone: null, address: { city: "Ogunpa" } },
+      { id: 1, name: "James", photo: "https://picsum.photos/id/1010/60", phone: "123-456", address: { city: "Eleyele" } },
+      { id: 2, name: "John", photo: "https://picsum.photos/id/1011/60", phone: null, address: { city: "Sango" } },
+      { id: 3, name: "Peter", photo: "https://picsum.photos/id/1012/60", phone: "113-152", address: { city: "Ojoo" } },
+      { id: 4, name: "Jonas", photo: "https://picsum.photos/id/1013/60", phone: "143-401", address: { city: "UI" } },
+      { id: 5, name: "Mark", photo: "https://picsum.photos/id/1014/60", phone: null, address: { city: "Ogunpa" } },
     ]
   }
 
@@ -28,13 +28,29 @@ class MainContent extends Component {
       phone
     )
   }
+
+  getCustomerRow = () => {
+    return (this.state.customers.map((customer) => {
+        const { id, name, photo, phone, address } = customer;
+        return (
+          <tr key={id}>
+            <td>{id}</td>
+            <td>{name}</td>
+            <td><img src={photo} alt="customer" /></td>
+            <td>{this.getPhoneNumber(phone)}</td>
+            <td>{address.city}</td>
+          </tr>
+        )
+      })
+    )
+  }
   
   render() {
     
     return (
       <>
         <h3
-          className="border-bottom m-1 p-1"
+          className="m-1 p-1"
         >
           {this.state.title}
           <span className="badge bg-secondary m-2">{this.state.count}</span>
@@ -50,25 +66,12 @@ class MainContent extends Component {
             <tr>
               <th>#</th>
               <th>Customer Name</th>
+              <th>Photo</th>
               <th>Phone Number</th>
               <th>City</th>
             </tr>
           </thead>
-          <tbody>
-            {
-              this.state.customers.map((customer) => {
-                const { id, name, phone, address } = customer;
-                return (
-                 <tr key={id}>
-                  <td>{id}</td>
-                  <td>{name}</td>
-                   <td>{this.getPhoneNumber(phone)}</td>
-                  <td>{address.city}</td>
-                </tr>
-                )
-              })
-            }
-          </tbody>
+          <tbody>{this.getCustomerRow()}</tbody>
         </table>
       </>
     )
