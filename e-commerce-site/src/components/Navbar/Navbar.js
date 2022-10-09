@@ -7,7 +7,7 @@ class Navbar extends Component {
       <>
         <nav className={`navbar navbar-expand-lg bg-dark ${styles.navbarStyle}`}>
           <div className={`container-fluid ${styles.navbarColor}`}>
-            <a className="navbar-brand" href="/">My App</a>
+            <a className="navbar-brand" href="/">eCommerce</a>
             <button
               className={`navbar-toggler`}
               type="button"

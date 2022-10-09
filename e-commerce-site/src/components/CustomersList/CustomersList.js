@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './mainContent.module.css';
+import styles from './customersList.module.css';
 
-class MainContent extends Component {
+class CustomersList extends Component {
 
   state = {
     title: "Customers",
@@ -32,8 +32,10 @@ class MainContent extends Component {
   }
 
   handleChangePhoto = (customer, index) => {
+    //get existing customers
     let custArray = this.state.customers;
     custArray[index].photo = "https://picsum.photos/id/1020/60";
+    //update "customer" array in the state
     this.setState({
       customers: custArray
     })
@@ -105,4 +107,4 @@ class MainContent extends Component {
   }
 }
 
-export default MainContent;
+export default CustomersList;
