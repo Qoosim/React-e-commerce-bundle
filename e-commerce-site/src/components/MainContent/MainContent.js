@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './mainContent.module.css';
 
 class MainContent extends Component {
 
@@ -11,6 +12,7 @@ class MainContent extends Component {
       { id: 3, name: "Peter", photo: "https://picsum.photos/id/1012/60", phone: "113-152", address: { city: "Ojoo" } },
       { id: 4, name: "Jonas", photo: "https://picsum.photos/id/1013/60", phone: "143-401", address: { city: "UI" } },
       { id: 5, name: "Mark", photo: "https://picsum.photos/id/1014/60", phone: null, address: { city: "Ogunpa" } },
+
     ]
   }
 
@@ -29,20 +31,45 @@ class MainContent extends Component {
     )
   }
 
+  handleChangePhoto = (customer, index) => {
+    let custArray = this.state.customers;
+    custArray[index].photo = "https://picsum.photos/id/1020/60";
+    this.setState({
+      customers: custArray
+    })
+  }
+
   getCustomerRow = () => {
-    return (this.state.customers.map((customer) => {
+    return (this.state.customers.map((customer, index) => {
         const { id, name, photo, phone, address } = customer;
         return (
           <tr key={id}>
             <td>{id}</td>
-            <td>{name}</td>
-            <td><img src={photo} alt="customer" /></td>
+            <td className={this.customerNameStyle(name)}>{name}</td>
+            <td>
+              <img src={photo} alt="customer" />
+              <div>
+                <button 
+                  className="btn btn-sm btn-secondary"
+                  onClick={() => this.handleChangePhoto(customer, index)}
+                >
+                  Change Photo
+                </button>
+              </div>
+            </td>
             <td>{this.getPhoneNumber(phone)}</td>
             <td>{address.city}</td>
           </tr>
         )
       })
     )
+  }
+
+  customerNameStyle = (customerName) => {
+    if (customerName.startsWith('J')) return `${styles.greenColor}`;
+     else  if (customerName.startsWith('P')) return `${styles.redColor}`;
+     else if (customerName.startsWith('M')) return `${styles.orangeColor}`;
+     else return ""
   }
   
   render() {
