@@ -23,10 +23,10 @@ class ShoppingCart extends Component {
                 return (
                   <Product
                     key={product.id}
-                    product={product.id}
-                    productName={product.productName}
-                    price={product.price}
-                  />
+                    product={product}
+                  >
+                  <button className="btn btn-primary d-block">Buy Now</button>
+                  </Product>
                 )
               })
             }
