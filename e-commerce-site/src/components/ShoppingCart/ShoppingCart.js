@@ -13,6 +13,27 @@ class ShoppingCart extends Component {
       { id: 6, productName: 'Dell Monitor', price: 19000, quantity: 0},
     ]
   }
+
+  handleIncrement = (product) => {
+    let allProducts = [...this.state.products];
+    let index = allProducts.indexOf(product)
+    allProducts[index].quantity++;
+    this.setState({
+      products: allProducts
+    })
+  }
+
+  handleDecrement = (product) => {
+    let allProducts = [...this.state.products];
+    let index = allProducts.indexOf(product);
+    if (allProducts[index].quantity !== 0) {
+      allProducts[index].quantity--;
+    }
+    this.setState({
+      products: allProducts
+    })
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -24,6 +45,8 @@ class ShoppingCart extends Component {
                   <Product
                     key={product.id}
                     product={product}
+                    onIncrement={this.handleIncrement}
+                    onDecrement={this.handleDecrement}
                   >
                   <button className="btn btn-primary d-block">Buy Now</button>
                   </Product>
