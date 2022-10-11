@@ -14,21 +14,44 @@ class ShoppingCart extends Component {
     ]
   }
 
-  handleIncrement = (product) => {
+  // executes when the user clicks on the + button
+  handleIncrement = (product, maxValue) => {
+    // get the index of selected product
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product)
-    allProducts[index].quantity++;
-    this.setState({
-      products: allProducts
-    })
+    if (allProducts[index].quantity < maxValue) {
+      allProducts[index].quantity++;
+      // update the state of current component(parentcomponent)
+      this.setState({
+        products: allProducts
+      })
+    }
   }
-
-  handleDecrement = (product) => {
+  
+  // executes when the user clicks on the - button
+  handleDecrement = (product, minValue) => {
+    // get the index of selected product
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product);
-    if (allProducts[index].quantity !== 0) {
+    if (allProducts[index].quantity > minValue) {
       allProducts[index].quantity--;
+      // update the state of current component(parent component)
+      this.setState({
+        products: allProducts
+      })
     }
+  }
+
+  // executes when the user clicks on Delete(X) button in the Product component
+  handleDelete = (product) => {
+    // get te index of selected product
+    let allProducts = [...this.state.products];
+    let index = allProducts.indexOf(product);
+
+    // delete product based on index
+    allProducts.splice(index, 1);
+
+    // update the state of current component(parent component)
     this.setState({
       products: allProducts
     })
@@ -47,6 +70,7 @@ class ShoppingCart extends Component {
                     product={product}
                     onIncrement={this.handleIncrement}
                     onDecrement={this.handleDecrement}
+                    onDelete={this.handleDelete}
                   >
                   <button className="btn btn-primary d-block">Buy Now</button>
                   </Product>
