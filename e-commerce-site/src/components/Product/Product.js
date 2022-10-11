@@ -3,12 +3,30 @@ import styles from './product.module.css';
 
 class Product extends Component {
 
-  state = {
-    product: this.props.product
+  constructor(props) {
+    super(props);
+    // console.log("Constructor - Product")
+
+    this.state = {
+      product: this.props.product
+    }
+  }
+
+  componentDidMount() {
+    //console.log("componentDidMount- Product")
+  }
+
+  componentDidUpdate() {
+    //console.log("componentDidUpdate - Product")
+  }
+
+  componentWillUnmount() {
+    //console.log("componentWillUnmount - Product")
   }
 
   render() {
-
+    // console.log(this.props)
+    // console.log("render - Product")
     return (
       <div className="col-lg-4">
         <div className="card m-2">
