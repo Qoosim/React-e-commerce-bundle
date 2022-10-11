@@ -48,13 +48,15 @@ class ShoppingCart extends Component {
     let allProducts = [...this.state.products];
     let index = allProducts.indexOf(product);
 
-    // delete product based on index
-    allProducts.splice(index, 1);
+    if (window.confirm("Are you sure to delete?")) {
+      // delete product based on index
+      allProducts.splice(index, 1);
 
-    // update the state of current component(parent component)
-    this.setState({
-      products: allProducts
-    })
+      // update the state of current component(parent component)
+      this.setState({
+        products: allProducts
+      })
+    }
   }
 
   render() {
