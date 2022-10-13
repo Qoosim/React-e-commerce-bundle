@@ -9,17 +9,22 @@ class ShoppingCart extends Component {
     super(props); // calling super class's contructor
     // Initialization of the state
     this.state = {
-      products: [
-        { id: 1, productName: 'iPhone', price: 8900, quantity: 0},
-        { id: 2, productName: 'Sony Camera', price: 4500, quantity: 0},
-        { id: 3, productName: 'Samsung LED TV', price: 78900, quantity: 0},
-        { id: 4, productName: 'iPad Pro', price: 7600, quantity: 0},
-        { id: 5, productName: 'Xbox', price: 8800, quantity: 0},
-        { id: 6, productName: 'Dell Monitor', price: 19000, quantity: 0},
-      ]
+      products: []
     }
   }
-  
+
+  // Executes after the constructor and render methods(includes life cycle of child component, if any) of the current component.
+  componentDidMount= async ()  => {
+    // fetches data from data source
+    const response = await fetch("http://localhost:5000/products")
+    const data = await response.json();
+    console.log(data);
+    this.setState({
+      products: data
+    })
+    // console.log("componentDidMount - ShoppingCart")
+  }
+
   // executes when the user clicks on the + button
   handleIncrement = (product, maxValue) => {
     // get the index of selected product
@@ -64,13 +69,7 @@ class ShoppingCart extends Component {
       })
     }
   }
-
-   // Executes after the constructor and render methods(includes life cycle of child component, if any) of the current component.
-  componentDidMount() {
-    // fetches data from data source
-    // console.log("componentDidMount - ShoppingCart")
-  }
-
+  
   componentDidUpdate(prevProps, prevState) {
     //console.log(
      // "componentDidUpdate - ShoppingCart", 
@@ -100,26 +99,26 @@ class ShoppingCart extends Component {
   render() {
     // console.log("render - ShoppingCart")
     return (
-      <div className="container-fluid">
-          <h4 className={styles.headerStyle}>Shopping Cart</h4>
-          <div className="row">
-            {
-              this.state.products.map((product) => {
-                return (
-                  <Product
-                    key={product.id}
-                    product={product}
-                    onIncrement={this.handleIncrement}
-                    onDecrement={this.handleDecrement}
-                    onDelete={this.handleDelete}
-                  >
-                  <button className="btn btn-primary d-block">Buy Now</button>
-                  </Product>
-                )
-              })
-            }
-          </div>
-      </div>
+      <>
+        <h4 className={styles.headerStyle}>Shopping Cart</h4>
+        <div className="row">
+          {
+            this.state.products.map((product) => {
+              return (
+                <Product
+                  key={product.id}
+                  product={product}
+                  onIncrement={this.handleIncrement}
+                  onDecrement={this.handleDecrement}
+                  onDelete={this.handleDelete}
+                >
+                <button className="btn btn-primary d-block">Buy Now</button>
+                </Product>
+              )
+            })
+          }
+        </div>
+      </>
     )
   }
 

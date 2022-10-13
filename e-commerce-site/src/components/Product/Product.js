@@ -51,7 +51,7 @@ class Product extends Component {
               <div className="btn-group">
                 <button
                   className="btn btn-outline-success"
-                  onClick={() => { this.props.onIncrement(this.state.product, 10) }}
+                  onClick={() => { this.props.onIncrement(this.state.product, 10)}}
                 >
                   +
                 </button>

@@ -12,9 +12,12 @@ class Form extends Component {
     }
   }
 
-  handleLoginClick = () => {
+  handleLoginClick = async () => {
     console.log(this.state)
-    if (this.state.email === 'admin@test.com' && this.state.password === 'admin123') {
+    const response = await fetch(`http://localhost:5000/users?email=${this.state.email}&password=${this.state.password}`)
+    const data = await response.json();
+    console.log(data);
+    if (data.length > 0) {
       this.setState({
         message: <span className="text-success">Successfully logged-in</span>
       })
