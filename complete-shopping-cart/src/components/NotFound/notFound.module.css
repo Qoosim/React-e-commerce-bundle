@@ -1,8 +1,0 @@
-.notFound {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: rgb(68, 68, 68);
-  min-height: 80vh;
-}
