@@ -1,5 +1,8 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
@@ -9,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ToastContainer />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
