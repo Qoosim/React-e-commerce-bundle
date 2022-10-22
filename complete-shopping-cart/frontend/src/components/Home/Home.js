@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
 import { useGetAllProductsQuery } from '../../features/productsApi';
 // import { useSelector } from 'react-redux'; // for getting data from createAsyncThunk
 import styles from './home.module.css';
@@ -6,6 +8,12 @@ import styles from './home.module.css';
 const Home = () => {
   // const { items, status } = useSelector((state) => state.products) // for createAsyncThunk
   const { data, error, isLoading } = useGetAllProductsQuery();
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
 
   return (
     <div className={styles.homeContainer}>
@@ -27,7 +35,11 @@ const Home = () => {
                       <span>{product.desc}</span>
                       <span className={styles.price}>${product.price}</span>
                     </div>
-                    <button>Add To Cart</button>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Add To Cart
+                    </button>
                   </div>
                 )
               })
