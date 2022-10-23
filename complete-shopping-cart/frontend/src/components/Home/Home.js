@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { addToCart } from '../../features/cartSlice';
 import { useGetAllProductsQuery } from '../../features/productsApi';
 // import { useSelector } from 'react-redux'; // for getting data from createAsyncThunk
@@ -10,9 +11,11 @@ const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
+    dispatch(addToCart(product));
+    navigate("/cart");
   }
 
   return (
