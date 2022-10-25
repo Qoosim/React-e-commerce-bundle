@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
 import styles from './cart.module.css';
-import { addToCart, decreaseCart, removeCartItem } from '../../features/cartSlice';
+import { addToCart, clearCart, decreaseCart, removeCartItem } from '../../features/cartSlice';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -20,6 +20,10 @@ const Cart = () => {
 
   const handleIncreaseCart = (cartItem) => {
     dispatch(addToCart(cartItem));
+  }
+
+  const handleClearCart = () => {
+    dispatch(clearCart())
   }
 
   return (
@@ -70,7 +74,12 @@ const Cart = () => {
               }
             </div>
             <div class={styles.cartSummary}>
-              <button className={styles.clearCart}>Clear Cart</button>
+              <button
+                className={styles.clearCart}
+                onClick={() => handleClearCart()}
+              >
+                Clear Cart
+              </button>
               <div className={styles.cartCheckout}>
                 <div className={styles.subTotal}>
                   <span>Subtotal</span>
