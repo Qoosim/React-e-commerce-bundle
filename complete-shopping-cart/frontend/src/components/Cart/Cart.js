@@ -1,11 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
 import styles from './cart.module.css';
+import { removeCartItem } from '../../features/cartSlice';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+  
+  const handleRemoveCartItem = (cartItem) => {
+    dispatch(removeCartItem(cartItem))
+  }
+
   return (
     <div className={styles.cartContainer}>
       <h2>Shopping Cart</h2>
@@ -37,7 +45,7 @@ const Cart = () => {
                       <div>
                         <h3>{cartItem.name}</h3>
                         <p>{cartItem.desc}</p>
-                        <button>Remove</button>
+                        <button onClick={() => handleRemoveCartItem(cartItem)}>Remove</button>
                       </div>
                     </div>
                     <div className={styles.cartProductPrice}>${cartItem.price}</div>
@@ -68,7 +76,6 @@ const Cart = () => {
                     <span>Continue Shopping</span>
                   </Link>
                 </div>
-
               </div>
             </div>
           </div>
