@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
 import styles from './cart.module.css';
-import { addToCart, clearCart, decreaseCart, removeCartItem } from '../../features/cartSlice';
+import { 
+  addToCart,
+  clearCart,
+  decreaseCart,
+  getTotals,
+  removeCartItem
+} from '../../features/cartSlice';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch])
   
   const handleRemoveCartItem = (cartItem) => {
     dispatch(removeCartItem(cartItem));

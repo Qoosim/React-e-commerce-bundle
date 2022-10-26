@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styles from './navbar.module.css';
 import { BsCart3 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
+
   return (
     <nav className={styles.navbar}>
       <Link to="/">
@@ -13,7 +16,7 @@ const Navbar = () => {
         <div className={styles.cartDiv}>
           <BsCart3 className={styles.cartIcon} />
           <span className={styles.cartCounter}>
-            <span>3</span>
+            <span>{cartTotalQuantity}</span>
           </span>
         </div>
       </Link>
