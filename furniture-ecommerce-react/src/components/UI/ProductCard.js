@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import productImg from '../../assets/images/arm-chair-01.jpg';
 import styles from './product.module.css';
 import { motion } from 'framer-motion';
@@ -13,14 +14,16 @@ const ProductCard = () => {
           <motion.img whileHover={{ scale: 0.9 }} src={productImg} alt="Product" />
         </div>
         <div className={`${styles.itemTitle} ${styles.productInfo}`}>
-          <h3 className={styles.productName}>Modern Armchair</h3>
+          <h3 className={styles.productName}>
+            <Link to='/shop/id'>Modern Armchair</Link>
+          </h3>
           <span>Chair</span>
         </div>
         <div className={styles.productCardBtn}>
           <span className={styles.price}>$299</span>
-          <span>
+          <motion.span whileTap={{ scale: 1.3 }}>
             <i class="ri-add-line"></i>
-          </span>
+          </motion.span>
         </div>
       </article>
     </Col>
