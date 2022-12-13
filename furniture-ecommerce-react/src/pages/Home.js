@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import products from '../assets/data/products';
 import Helmet from '../components/Helmet/Helmet';
 import { Col, Container, Row } from 'reactstrap';
 import styles from '../styles/home.module.css';
@@ -10,7 +11,14 @@ import ProductsList from '../components/UI/ProductsList';
 
 const Home = () => {
 
+  const [data, setData] = useState(products);
+
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    const filteredProducts = data.filter((item) => item.category === 'chair');
+    setData(filteredProducts);
+  }, [data])
 
   return (
     <Helmet title="Home">
@@ -42,7 +50,7 @@ const Home = () => {
             <Col lg='12' className={`text-center`}>
               <h2 className={styles.sectionTitle}>Trending Products</h2>
             </Col>
-            <ProductsList />
+            <ProductsList data={data} />
           </Row>
         </Container>
       </section>
