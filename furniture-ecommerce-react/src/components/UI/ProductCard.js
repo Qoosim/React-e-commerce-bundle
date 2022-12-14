@@ -1,22 +1,21 @@
 import React from 'react';
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-// import productImg from '../../assets/images/arm-chair-01.jpg';
 import styles from './product.module.css';
 import { motion } from 'framer-motion';
 
 
 const ProductCard = ({ item }) => {
-  const { category, imgUrl, productName, price } = item;
+  const { id, category, imgUrl, productName, price } = item;
   return (
-    <Col lg='3' md='4'>
+    <Col lg='3' md='4' className={`mb-2`}>
       <article className={styles.productItem}>
         <div className={styles.productImage}>
           <motion.img whileHover={{ scale: 0.9 }} src={imgUrl} alt="Product" />
         </div>
         <div className={`${styles.itemTitle} ${styles.productInfo}`}>
           <h3 className={styles.productName}>
-            <Link to='/shop/id'>{productName}</Link>
+            <Link to={`/shop/${id}`}>{productName}</Link>
           </h3>
           <span>{category}</span>
         </div>
