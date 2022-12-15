@@ -122,7 +122,7 @@ const Home = () => {
       <section className={styles.newArrival}>
         <Container>
           <Row>
-            <Col lg="12" className={`text-center`}>
+            <Col lg="12" className={`text-center mb-5`}>
               <h2 className={styles.sectionTitle}>New Arrival</h2>
             </Col>
             <ProductsList data={mobileProducts} />
@@ -133,7 +133,7 @@ const Home = () => {
       <section className={styles.popularCategory}>
         <Container>
           <Row>
-            <Col lg="12" className={`text-center`}>
+            <Col lg="12" className={`text-center mb-5`}>
               <h2 className={styles.sectionTitle}>Popular in Category</h2>
             </Col>
             <ProductsList data={popularProducts} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styles from './header.module.css';
 import { motion } from 'framer-motion';
 import { Container, Row } from 'reactstrap';
@@ -8,8 +8,27 @@ import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
 
 const Header = () => {
+
+  const headerRef = useRef(null);
+
+  const headerSticky = () => {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        headerRef.current.classList.add(`${styles.stickyHeader}`);
+      } else {
+        headerRef.current.classList.remove(`${styles.stickyHeader}`);
+      }
+    })
+  }
+
+  useEffect(() => {
+    headerSticky();
+
+    return () => window.removeEventListener('scroll', headerSticky);
+  })
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={headerRef}>
       <Container>
         <Row>
           <div className={styles.navWrapper}>
