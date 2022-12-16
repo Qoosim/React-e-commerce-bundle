@@ -10,6 +10,7 @@ import { navLinks } from './navLinks';
 const Header = () => {
 
   const headerRef = useRef(null);
+  const menuRef = useRef(null)
 
   const headerSticky = () => {
     window.addEventListener('scroll', () => {
@@ -27,6 +28,8 @@ const Header = () => {
     return () => window.removeEventListener('scroll', headerSticky);
   })
 
+  const menuToggle = () => menuRef.current.classList.toggle(`${styles.activeMenu}`);
+
   return (
     <header className={styles.header} ref={headerRef}>
       <Container>
@@ -38,7 +41,7 @@ const Header = () => {
                 <h1>Multimart</h1>
               </div>
             </div>
-            <div className={styles.navigation}>
+            <div className={styles.navigation} ref={menuRef} onClick={menuToggle}>
               <ul className={styles.menu}>
                 {
                   navLinks.map((link, index) => (
@@ -57,7 +60,7 @@ const Header = () => {
               </ul>
             </div>
             <div className={styles.navIcons}>
-              <span className={styles.favIcon}>
+              <span className={styles.heartIcon}>
                 <i className="ri-heart-line"></i>
                 <span className={styles.badge}>2</span>
               </span>
@@ -70,7 +73,7 @@ const Header = () => {
               </span>
             </div>
             <div className={styles.mobileMenu}>
-              <span><i className="ri-menu-line"></i></span>
+              <span onClick={menuToggle}><i className="ri-menu-line"></i></span>
             </div>
           </div>
         </Row>
