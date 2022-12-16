@@ -5,8 +5,8 @@ import styles from './product.module.css';
 import { motion } from 'framer-motion';
 
 
-const ProductCard = ({ item }) => {
-  const { id, category, imgUrl, productName, price } = item;
+const ProductCard = ({ product }) => {
+  const { id, category, imgUrl, productName, price } = product;
   return (
     <Col lg='3' md='4' className={`mb-2`}>
       <article className={styles.productItem}>

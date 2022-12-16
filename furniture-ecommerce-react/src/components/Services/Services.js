@@ -2,15 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Row, Col } from 'reactstrap';
 import styles from './services.module.css';
-import ServiceData from '../assets/data/serviceData';
 
-const Services = () => {
+const Services = ({ serviceData }) => {
   return (
     <section className={styles.services}>
       <Container>
         <Row>
           {
-            ServiceData.map((service, index) => (
+            serviceData.map((service, index) => (
               <Col lg='3' md='4' key={index}>
                 <motion.div
                   whileHover={{ scale: 0.9 }}
