@@ -22,7 +22,7 @@ root.render(
           closeOnClick
           pauseOnHover={false}
           />
-          <App />
+        <App />
       </Provider>
     </Router>
   </React.StrictMode>

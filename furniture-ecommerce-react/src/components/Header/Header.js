@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './header.module.css';
 import { motion } from 'framer-motion';
 import { Container, Row } from 'reactstrap';
@@ -8,6 +9,8 @@ import userIcon from '../../assets/images/user-icon.png';
 import { navLinks } from './navLinks';
 
 const Header = () => {
+
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const headerRef = useRef(null);
   const menuRef = useRef(null)
@@ -66,7 +69,7 @@ const Header = () => {
               </span>
               <span className={styles.cartIcon}>
                 <i className="ri-shopping-cart-2-line"></i>
-                <span className={styles.badge}>2</span>
+                <span className={styles.badge}>{totalQuantity}</span>
               </span>
               <span>
                 <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="user icon" />
