@@ -101,7 +101,7 @@ const Home = () => {
       <section className={styles.timerCount}>
         <Container>
           <Row>
-            <Col lg="6" md="6">
+            <Col lg="6" md="12" className={styles.countDownCol}>
               <div className={styles.clockTopContent}>
                 <h4 className={`text-white fs-6 mb-2`}>Limited Offers</h4>
                 <h3 className={`text-white fs-5 mb-3`}>Quality Armchair</h3>
@@ -114,7 +114,7 @@ const Home = () => {
                 <Link to="/shop">Visit Store</Link>
               </motion.button>
             </Col>
-            <Col lg="6" md="6" className={`text-end`}>
+            <Col lg="6" md="12" className={`text-end ${styles.counterImg}`}>
               <img src={counterImg} alt="Counter" />
             </Col>
           </Row>

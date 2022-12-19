@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './css/clock.module.css';
 
 const Clock = () => {
 
@@ -37,29 +38,29 @@ const Clock = () => {
   })
 
   return (
-    <div className={`clockWrapper d-flex align-items-center gap-3`}>
-      <div className={`clockData d-flex align-items-center gap-3`}>
+    <div className={`d-flex align-items-center gap-3 ${styles.clockWrapper}`}>
+      <div className={`d-flex align-items-center gap-3 ${styles.clockData}`}>
         <div className='text-center'>
           <h1 className='text-white fs-3 mb-2'>{days}</h1>
           <h5 className='text-white fs-6'>days</h5>
         </div>
         <span className='text-white fs-3'>:</span>
       </div>
-      <div className={`clockData d-flex align-items-center gap-3`}>
+      <div className={`d-flex align-items-center gap-3 ${styles.clockData}`}>
         <div className='text-center'>
           <h1 className='text-white fs-3 mb-2'>{hours}</h1>
           <h5 className='text-white fs-6'>Hours</h5>
         </div>
         <span className='text-white fs-3'>:</span>
       </div>
-      <div className={`clockData d-flex align-items-center gap-3`}>
+      <div className={`d-flex align-items-center gap-3 ${styles.clockData}`}>
         <div className='text-center'>
           <h1 className='text-white fs-3 mb-2'>{minutes}</h1>
           <h5 className='text-white fs-6'>Minutes</h5>
         </div>
         <span className='text-white fs-3'>:</span>
       </div>
-      <div className={`clockData d-flex align-items-center gap-3`}>
+      <div className={`d-flex align-items-center gap-3 ${styles.clockData}`}>
         <div className='text-center'>
           <h1 className='text-white fs-3 mb-2'>{seconds}</h1>
           <h5 className='text-white fs-6'>Seconds</h5>

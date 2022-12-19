@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import styles from './product.module.css';
+import styles from './css/product.module.css';
 import { motion } from 'framer-motion';
 
 
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         <div className={styles.productCardBtn}>
           <span className={styles.price}>${price}</span>
           <motion.span whileTap={{ scale: 1.3 }}>
-            <i class="ri-add-line"></i>
+            <i className="ri-add-line"></i>
           </motion.span>
         </div>
       </article>

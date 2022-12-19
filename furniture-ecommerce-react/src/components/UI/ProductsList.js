@@ -5,8 +5,8 @@ const ProductList = ({ products }) => {
   return (
     <>
       {
-        products?.map((product) => (
-          <ProductCard product={product} />
+        products?.map((product, index) => (
+          <ProductCard product={product} key={index} />
         ))
       }
     </>

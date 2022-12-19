@@ -16,7 +16,7 @@ const Services = ({ serviceData }) => {
                   className={styles.serviceItem}
                   style={{ background: `${service.bg}`}}
                 >
-                  <span><i class={service.icon}></i></span>
+                  <span><i className={service.icon}></i></span>
                   <div>
                     <h3>{service.title}</h3>
                     <p>{service.subtitle}</p>

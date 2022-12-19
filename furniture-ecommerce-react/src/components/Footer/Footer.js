@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/eco-logo.png';
 import styles from './footer.module.css';
 
 const Footer = () => {
@@ -12,7 +11,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <Row>
-          <Col lg='4'>
+          <Col lg='4' md='6' className='mb-4'>
             <div className={styles.logo}>
               <div>
                 <h1>Multimart</h1>
@@ -22,7 +21,7 @@ const Footer = () => {
                 Ipsum ipsam est delectus nulla impedit. Dolores beatae aperiam harum id impedit, fugiat? Illo qui sunt soluta deleniti iusto ipsam.
               </p>
           </Col>
-          <Col lg='3'>
+          <Col lg='3' md='3' className='mb-4'>
             <div className={styles.footerQuickLinks}>
               <h4 className={styles.footerQuickTitle}>Top Categories</h4>
               <ListGroup>
@@ -42,7 +41,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='2'>
+          <Col lg='2' md='3' className='mb-4'>
             <div className={styles.footerQuickLinks}>
               <h4 className={styles.footerQuickTitle}>Useful Links</h4>
               <ListGroup>
@@ -61,26 +60,26 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='3'>
+          <Col lg='3' md='4' className='mb-4'>
             <div className={styles.footerQuickLinks}>
               <h4 className={styles.footerQuickTitle}>Contact</h4>
               <ListGroup className={styles.footerContact}>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <span><i class="ri-map-pin-2-line"></i></span>
+                  <span><i className="ri-map-pin-2-line"></i></span>
                   <p>123 GEM BUILDING, Ojo, Ibadan, Oyo State</p>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <span><i class="ri-phone-line"></i></span>
+                  <span><i className="ri-phone-line"></i></span>
                   <p>+2348036095204</p>
                 </ListGroupItem>
                 <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                  <span><i class="ri-mail-line"></i></span>
+                  <span><i className="ri-mail-line"></i></span>
                   <p>ayinde.abdulghaniyy@gmail.com</p>
                 </ListGroupItem>
               </ListGroup>
             </div>
           </Col>
-          <Col className={styles.footerCopyright}>
+          <Col md='12' className={styles.footerCopyright}>
             <p>Copyright {year} developed by Qoosim Abdul. All rights reserved.</p>
           </Col>
         </Row>
