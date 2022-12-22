@@ -1,9 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import styles from './css/product.module.css';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
 import { cartActions } from '../../redux/slices/cartSlice';
 import { toast } from 'react-toastify';
 
