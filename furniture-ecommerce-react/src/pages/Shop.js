@@ -7,14 +7,58 @@ import products from '../assets/data/products';
 import ProductsList from '../components/UI/ProductsList';
 
 const Shop = () => {
+
   const [productsData, setProductsData] = useState(products);
 
   const handleFilter = (e) => {
+
     const filteredValue = e.target.value;
+
     if (filteredValue === 'sofa') {
-      const filteredProducts = productsData.filter((product) => product.category === 'sofa');
+      const filteredProducts = productsData.filter(
+        (product) => product.category === 'sofa'
+      );
       setProductsData(filteredProducts);
     }
+
+    if (filteredValue === 'mobile') {
+      const filteredProducts = productsData.filter(
+        (product) => product.category === 'mobile'
+      );
+      setProductsData(filteredProducts);
+    }
+
+    if (filteredValue === 'watch') {
+      const filteredProducts = productsData.filter(
+        (product) => product.category === 'watch'
+      );
+      setProductsData(filteredProducts);
+    }
+
+    if (filteredValue === 'wireless') {
+      const filteredProducts = productsData.filter(
+        (product) => product.category === 'wireless'
+      );
+      setProductsData(filteredProducts);
+    }
+    
+    if (filteredValue === 'chair') {
+      const filteredProducts = products.filter(
+        (product) => product.category === 'chair'
+      );
+      setProductsData(filteredProducts);
+    }
+  }
+
+  const handleSearch = (e) => {
+
+    const searchTerm = e.target.value;
+
+    const searchProducts = products.filter(
+      (product) => product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setProductsData(searchProducts);
   }
 
   return (
@@ -47,7 +91,7 @@ const Shop = () => {
             </Col>
             <Col lg='6' md='6'>
               <div className={styles.searchBox}>
-                <input type="text" placeholder='Search...' />
+                <input type="text" placeholder='Search...' onChange={handleSearch} />
                 <span>
                   <i className="ri-search-line"></i>
                 </span>
@@ -57,11 +101,11 @@ const Shop = () => {
         </Container>
       </section>
 
-      <section>
+      <section className={`pt-0`}>
         <Container>
           <Row>
             { productsData.length === 0 ? (
-                <h1>No products are found!</h1>
+                <h1 className={`text-center fs-4`}>No products are found!</h1>
             ) : (
                 <ProductsList products={productsData} />
             )}
